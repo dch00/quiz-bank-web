@@ -50,7 +50,7 @@ export default function Dashboard() {
 
 function Progress({ progress }) {
   let text =
-    progress.completed === 0
+    typeof progress === "undefined" || progress.completed === 0
       ? "You have not completed any questions today. Click questions to get started!"
       : progress.completed === 1
       ? "You've completed 1 question so far. Keep it up!"
