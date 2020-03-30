@@ -1,0 +1,84 @@
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-row {
+  display: flex;
+}
+
+.center {
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-row-between-center {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.login-container {
+  border: 1px solid lightgray;
+  border-radius: 10px;
+  width: 400px;
+  padding: 20px;
+  margin: 20px;
+  background-color: white;
+}
+
+.page-container {
+  width: 80%;
+  min-height: 50vh;
+  padding-top: 5px;
+}
+
+.pb-container {
+  height: 100%;
+  justify-content: center;
+}
+
+.btn-container-1 {
+  display: flex;
+  width: 100%;
+  height: 50px;
+  background-color: $gray;
+  border-radius: 5px;
+  padding: 5px 20px;
+}
+
+.btn-container-1 > div {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.btn-container-1 > div:first-child {
+  width: 75%;
+}
+
+.btn-container-1 > div:last-child {
+  display: flex;
+  width: 25%;
+  justify-content: space-evenly;
+}
+
+.tag-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.tag-container > .card {
+  width: 24%;
+  margin: 0.5%;
+}
+
+.quiz-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.quiz-container > .card {
+  width: 24%;
+  margin: 0.5%;
+}
