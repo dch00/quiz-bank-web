@@ -57,31 +57,27 @@ export default function Question({ match }) {
       data
     })
       .then(res => {
-        console.log(1, res);
-        trackSubmission(res.data.token);
+        trackSubmission(res.data.token, submit);
       })
       .catch(err => {
         console.log(err);
       });
 
-    function trackSubmission(token) {
+    function trackSubmission(token, submit) {
       setTimeout(() => {
         axios.get(`https://api.judge0.com/submissions/${token}`).then(res => {
-          console.log(2, res);
-          if (res.data.status.id <= 2) trackSubmission(token);
+          if (res.data.status.id <= 2) trackSubmission(token, submit);
           else if (res.data.stdout) {
             setOutput(res.data.stdout);
-            if (submit) progressCheck(res.data.stdout);
+            if (submit) progressCheck(res.data.stdout, submit);
           } else if (res.data.stderr) setOutput(res.data.stderr);
           else if (res.data.compile_output) setOutput(res.data.compile_output);
-          if (submit) setSubmitting(false);
-          else setTesting(false);
         });
       }, 500);
     }
   }
 
-  function progressCheck(output) {
+  function progressCheck(output, submit) {
     let ar = output.split("\n");
     let total = parseInt(ar[0], 0);
     let correct = parseInt(ar[1], 0);
@@ -98,6 +94,8 @@ export default function Question({ match }) {
         mode,
         question
       );
+    if (submit) setSubmitting(false);
+    else setTesting(false);
   }
 
   function reset() {
